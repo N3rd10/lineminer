@@ -10,8 +10,12 @@ To play go to n3rd10.github.io/lineminer
 - Use the right and left arrow keys to move
 
 
+## Changelog
 
-
+###v0.01
+<ul>
+  <li>movement</li>
+</ul>
 
 ## Contributing
 Feel free to submit issues or pull requests if you have suggestions or improvements for the game.
