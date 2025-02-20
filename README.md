@@ -13,15 +13,12 @@ To play go to n3rd10.github.io/lineminer
 ## Changelog
 
 ### v0.02
-<ul>
-  <li>mining</li>
-  <li>void block</li>
-  <li>cursor</li>
-</ul>
+- mining
+- void block
+- cursor
+
 ### v0.01
-<ul>
-  <li>movement</li>
-</ul>
+- movement
 
 ## Contributing
 Feel free to submit issues or pull requests if you have suggestions or improvements for the game.
