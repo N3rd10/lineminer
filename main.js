@@ -32,6 +32,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inventory elements
     const inventory = [];
     const inventoryDisplay = document.getElementById('inventory-items');
+    let selectedBlockType = null;
+
+    // Function to update inventory display
+    function updateInventoryDisplay() {
+        inventoryDisplay.innerHTML = '';
+        const itemCounts = inventory.reduce((counts, item) => {
+            counts[item] = (counts[item] || 0) + 1;
+            return counts;
+        }, {});
+
+        for (const [item, count] of Object.entries(itemCounts)) {
+            const inventoryItem = document.createElement('div');
+            inventoryItem.classList.add('inventory-item');
+            inventoryItem.textContent = `${blockTypes[item].name}: ${count}`;
+            inventoryItem.dataset.type = item;
+            inventoryItem.addEventListener('click', () => {
+                selectedBlockType = item;
+                console.log(`Selected block type: ${blockTypes[item].name}`);
+            });
+            inventoryDisplay.appendChild(inventoryItem);
+        }
+    }
 
     // Player movement
     let playerPosition = 0;
@@ -40,10 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (event) => {
         console.log(event.key);
 
-        if (event.key === 'ArrowRight' && playerPosition < 19 && !blocks[playerPosition + 1].classList.contains('void')) {
+        if (event.key === 'ArrowRight' && playerPosition < 19 && blocks[playerPosition + 1].dataset.type !== 'void') {
             playerPosition++;
             lastDirection = 'right';
-        } else if (event.key === 'ArrowLeft' && playerPosition > 0 && !blocks[playerPosition - 1].classList.contains('void')) {
+        } else if (event.key === 'ArrowLeft' && playerPosition > 0 && blocks[playerPosition - 1].dataset.type !== 'void') {
             playerPosition--;
             lastDirection = 'left';
         } else if (event.key === ' ') {
@@ -54,13 +76,34 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (lastDirection === 'left' && playerPosition > 0) {
                 minePosition--;
             }
-            if (!blocks[minePosition].classList.contains('void')) {
+            if (blocks[minePosition].dataset.type !== 'void') {
                 console.log(`Mining block at position: ${minePosition}`);
                 const blockType = blocks[minePosition].dataset.type;
                 blocks[minePosition].classList.replace(blockTypes[blockType].class, blockTypes.void.class);
                 blocks[minePosition].dataset.type = 'void'; // Update block type to void
                 inventory.push(blockType); // Add mined block to inventory
                 updateInventoryDisplay();
+            }
+        } else if (event.key === 'Shift' && selectedBlockType) {
+            // Place selected block type at the cursor position
+            let placePosition = playerPosition;
+            if (lastDirection === 'right' && playerPosition < 19) {
+                placePosition++;
+            } else if (lastDirection === 'left' && playerPosition > 0) {
+                placePosition--;
+            }
+            if (blocks[placePosition].dataset.type === 'void') {
+                console.log(`Placing block at position: ${placePosition}`);
+                blocks[placePosition].classList.replace(blockTypes.void.class, blockTypes[selectedBlockType].class);
+                blocks[placePosition].dataset.type = selectedBlockType; // Update block type to selected block type
+
+                // Remove one instance of the selected block type from the inventory
+                const index = inventory.indexOf(selectedBlockType);
+                if (index > -1) {
+                    inventory.splice(index, 1);
+                }
+                updateInventoryDisplay(); // Refresh the inventory display
+                selectedBlockType = null; // Clear selected block type after placing
             }
         }
         player.style.left = `${playerPosition * 24}px`;
@@ -75,19 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
         cursor.style.left = `${cursorPosition * 24}px`;
     });
 
-    function updateInventoryDisplay() {
-        inventoryDisplay.innerHTML = '';
-        const itemCounts = inventory.reduce((counts, item) => {
-            counts[item] = (counts[item] || 0) + 1;
-            return counts;
-        }, {});
-
-        for (const [item, count] of Object.entries(itemCounts)) {
-            const inventoryItem = document.createElement('div');
-            inventoryItem.classList.add('inventory-item');
-            inventoryItem.textContent = `${blockTypes[item].name}: ${count}`;
-            inventoryDisplay.appendChild(inventoryItem);
-        }
+    // Example function to add items to the inventory
+    function addItemToInventory(item) {
+        inventory.push(item);
+        updateInventoryDisplay();
     }
 
+    // Initial inventory update
+    updateInventoryDisplay();
 });
