@@ -1,48 +1,72 @@
+/* General styles */
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    margin: 20px 0;
 }
 
 #game-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 20px auto;
-    width: 500px; /* Adjust width to fit blocks */
-    height: 50px;
-    border: 2px solid #333;
-    background-color: #fff;
     position: relative;
+    width: 480px; /* 20 blocks * 24px each */
+    height: 24px;
+    border: 1px solid #333;
+    background-color: #ffffff; /* white background */
+    display: flex;
 }
 
 .block {
-    width: 20px;
-    height: 20px;
-    margin: 2px;
-    background-color: #8B4513; /* Brown color for dirt blocks */
+    width: 24px;
+    height: 24px;
+}
+
+.block-dirt {
+    background-color: #8B4513; /* Brown color for dirt */
+}
+
+.block-void {
+    background-color: #ffffff; /* white background for void */
 }
 
 .player {
-    width: 20px;
-    height: 20px;
-    margin: 2px;
-    background-color: #00f; /* Blue color for player */
     position: absolute;
-    left: 0;
-}
-
-.void {
-    width: 20px;
-    height: 20px;
-    margin: 2px;
-    background-color: #ffffff; /* Black color for void */
+    width: 24px;
+    height: 24px;
+    background-color: #00c8ff; /* blue color for player */
+    border: 1px solid #333;
 }
 
 .cursor {
+    position: absolute;
     width: 24px;
     height: 24px;
-    border: 2px dashed red; /* Red dashed outline for cursor */
-    position: absolute;
-    pointer-events: none; /* Prevent cursor from blocking interactions */
+    border: 2px dashed #333;
+    pointer-events: none;
+}
+
+#ui {
+    margin-top: 20px;
+}
+
+#inventory {
+    border: 1px solid #333;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.inventory-item {
+    background-color: #ccc;
+    border: 1px solid #333;
+    padding: 5px;
+    margin: 2px;
+    display: inline-block;
 }

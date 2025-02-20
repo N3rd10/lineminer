@@ -1,7 +1,7 @@
 # Mineline
 
 ## Overview
-This project is a simple 1D Minecraft-inspired web game. the goal is for players to interact with the game world interact with the game world, and gather resources in a one-dimensional environment.
+This project is a simple 1D Minecraft-inspired web game. the goal is for players to be able to interact with the game world interact with the game world, and gather resources in a one-dimensional environment.
 
 
 ### Running the Game
@@ -11,6 +11,9 @@ To play go to n3rd10.github.io/mineline
 
 
 ## Changelog
+
+### v0.03
+- added invintory
 
 ### v0.02
 - mining
