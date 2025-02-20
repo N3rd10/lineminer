@@ -12,7 +12,7 @@ To play go to n3rd10.github.io/lineminer
 
 ## Changelog
 
-###v0.01
+### v0.01
 <ul>
   <li>movement</li>
 </ul>
