@@ -5,7 +5,7 @@ This project is a simple 1D Minecraft-inspired web game. the goal is for players
 
 
 ### Running the Game
-To play go to n3rd10.github.io/lineminer
+To play go to n3rd10.github.io/mineline
 ### How to Play
 - Use the right and left arrow keys to move
 
