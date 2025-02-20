@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (event) => {
         console.log(event.key);
 
-        if (event.key === 'ArrowRight' && playerPosition < 19 && blocks[playerPosition + 1].dataset.type !== 'void') {
+        if (event.key === 'ArrowRight' && playerPosition < 19 && !blocks[playerPosition + 1].classList.contains('void')) {
             playerPosition++;
             lastDirection = 'right';
-        } else if (event.key === 'ArrowLeft' && playerPosition > 0 && blocks[playerPosition - 1].dataset.type !== 'void') {
+        } else if (event.key === 'ArrowLeft' && playerPosition > 0 && !blocks[playerPosition - 1].classList.contains('void')) {
             playerPosition--;
             lastDirection = 'left';
         } else if (event.key === ' ') {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (lastDirection === 'left' && playerPosition > 0) {
                 minePosition--;
             }
-            if (blocks[minePosition].dataset.type !== 'void') {
+            if (!blocks[minePosition].classList.contains('void')) {
                 console.log(`Mining block at position: ${minePosition}`);
                 const blockType = blocks[minePosition].dataset.type;
                 blocks[minePosition].classList.replace(blockTypes[blockType].class, blockTypes.void.class);
@@ -90,9 +90,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Example function to add items to the inventory
-    function addItemToInventory(item) {
-        inventory.push(item);
-        updateInventoryDisplay();
-    }
 });
