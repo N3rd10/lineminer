@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px auto;
+    width: 500px; /* Adjust width to fit blocks */
+    height: 50px;
+    border: 2px solid #333;
+    background-color: #fff;
+    position: relative;
+}
+
+.block {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    background-color: #8B4513; /* Brown color for dirt blocks */
+}
+
+.player {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    background-color: #00f; /* Blue color for player */
+    position: absolute;
+    left: 0;
+}
+
+.void {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    background-color: #000; /* Black color for void */
+}

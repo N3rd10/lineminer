@@ -1,0 +1,22 @@
+{
+  "name": "1d-minecraft-web-game",
+  "version": "1.0.0",
+  "description": "A simple 1D Minecraft web game.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build step not defined yet.'"
+  },
+  "keywords": [
+    "minecraft",
+    "web",
+    "game",
+    "1d"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}
