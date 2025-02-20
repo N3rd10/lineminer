@@ -1,4 +1,4 @@
-# Line Miner
+# Mineline
 
 ## Overview
 This project is a simple 1D Minecraft-inspired web game. the goal is for players to interact with the game world interact with the game world, gather resources, and build structures in a one-dimensional environment.
