@@ -36,5 +36,13 @@ body {
     width: 20px;
     height: 20px;
     margin: 2px;
-    background-color: #000; /* Black color for void */
+    background-color: #ffffff; /* Black color for void */
+}
+
+.cursor {
+    width: 24px;
+    height: 24px;
+    border: 2px dashed red; /* Red dashed outline for cursor */
+    position: absolute;
+    pointer-events: none; /* Prevent cursor from blocking interactions */
 }
