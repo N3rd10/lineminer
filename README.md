@@ -12,6 +12,12 @@ To play go to n3rd10.github.io/lineminer
 
 ## Changelog
 
+### v0.02
+<ul>
+  <li>mining</li>
+  <li>void block</li>
+  <li>cursor</li>
+</ul>
 ### v0.01
 <ul>
   <li>movement</li>
