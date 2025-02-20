@@ -2,7 +2,7 @@
   "name": "1d-minecraft-web-game",
   "version": "1.0.0",
   "description": "A simple 1D Minecraft web game.",
-  "main": "src/main.js",
+  "main": "main.js",
   "scripts": {
     "start": "live-server src",
     "build": "echo 'Build step not defined yet.'"
@@ -11,7 +11,8 @@
     "minecraft",
     "web",
     "game",
-    "1d"
+    "1d",
+    "mineline"
   ],
   "author": "N3rd10",
   "license": "MIT",
