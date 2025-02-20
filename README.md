@@ -11,6 +11,8 @@ To play go to n3rd10.github.io/mineline
 
 
 ## Changelog
+### v0.04
+- added block placing
 
 ### v0.03
 - added invintory
