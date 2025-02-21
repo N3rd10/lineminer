@@ -47,8 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
             inventoryItem.classList.add('inventory-item');
             inventoryItem.textContent = `${blockTypes[item].name}: ${count}`;
             inventoryItem.dataset.type = item;
+            if (item === selectedBlockType) {
+                inventoryItem.classList.add('selected');
+            }
             inventoryItem.addEventListener('click', () => {
                 selectedBlockType = item;
+                updateInventoryDisplay(); // Refresh to highlight the selected item
                 console.log(`Selected block type: ${blockTypes[item].name}`);
             });
             inventoryDisplay.appendChild(inventoryItem);
@@ -103,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     inventory.splice(index, 1);
                 }
                 updateInventoryDisplay(); // Refresh the inventory display
-                selectedBlockType = null; // Clear selected block type after placing
             }
         }
         player.style.left = `${playerPosition * 24}px`;

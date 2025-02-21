@@ -20,7 +20,7 @@ h1 {
     width: 480px; /* 20 blocks * 24px each */
     height: 24px;
     border: 1px solid #333;
-    background-color: #ffffff; /* white background */
+    background-color: #fcfcfc; /* Sky blue background */
     display: flex;
 }
 
@@ -34,14 +34,14 @@ h1 {
 }
 
 .block-void {
-    background-color: #ffffff; /* white background for void */
+    background-color: #ffffff; 
 }
 
 .player {
     position: absolute;
     width: 24px;
     height: 24px;
-    background-color: #00c8ff; /* blue color for player */
+    background-color: #00ddff;
     border: 1px solid #333;
 }
 
@@ -69,4 +69,8 @@ h1 {
     padding: 5px;
     margin: 2px;
     display: inline-block;
+}
+
+.inventory-item.selected {
+    background-color: #ff0; /* Highlight selected item */
 }
