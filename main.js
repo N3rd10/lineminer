@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const gameContainer = document.getElementById('game-container');
+    const blockLayer = document.getElementById('block-layer');
+    const entityLayer = document.getElementById('entity-layer');
 
     // Define block types
     const blockTypes = {
@@ -8,26 +9,29 @@ document.addEventListener('DOMContentLoaded', () => {
         // Future block types can be added here
     };
 
+    // Set world size
+    const worldSize = 20;
+
     // Create blocks
     const blocks = [];
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < worldSize; i++) {
         const block = document.createElement('div');
         block.classList.add('block', blockTypes.dirt.class);
         block.dataset.index = i;
         block.dataset.type = 'dirt';
-        gameContainer.appendChild(block);
+        blockLayer.appendChild(block);
         blocks.push(block);
     }
 
     // Create player
     const player = document.createElement('div');
     player.classList.add('player');
-    gameContainer.appendChild(player);
+    entityLayer.appendChild(player);
 
     // Create cursor
     const cursor = document.createElement('div');
     cursor.classList.add('cursor');
-    gameContainer.appendChild(cursor);
+    entityLayer.appendChild(cursor);
 
     // Inventory elements
     const inventory = [];
@@ -66,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (event) => {
         console.log(event.key);
 
-        if (event.key === 'ArrowRight' && playerPosition < 19 && blocks[playerPosition + 1].dataset.type !== 'void') {
+        if (event.key === 'ArrowRight' && playerPosition < worldSize - 1 && blocks[playerPosition + 1].dataset.type !== 'void') {
             playerPosition++;
             lastDirection = 'right';
         } else if (event.key === 'ArrowLeft' && playerPosition > 0 && blocks[playerPosition - 1].dataset.type !== 'void') {
@@ -75,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (event.key === ' ') {
             // Mine block in the last direction moved
             let minePosition = playerPosition;
-            if (lastDirection === 'right' && playerPosition < 19) {
+            if (lastDirection === 'right' && playerPosition < worldSize - 1) {
                 minePosition++;
             } else if (lastDirection === 'left' && playerPosition > 0) {
                 minePosition--;
@@ -91,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (event.key === 'Shift' && selectedBlockType) {
             // Place selected block type at the cursor position
             let placePosition = playerPosition;
-            if (lastDirection === 'right' && playerPosition < 19) {
+            if (lastDirection === 'right' && playerPosition < worldSize - 1) {
                 placePosition++;
             } else if (lastDirection === 'left' && playerPosition > 0) {
                 placePosition--;
@@ -113,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update cursor position
         let cursorPosition = playerPosition;
-        if (lastDirection === 'right' && playerPosition < 19) {
+        if (lastDirection === 'right' && playerPosition < worldSize - 1) {
             cursorPosition++;
         } else if (lastDirection === 'left' && playerPosition > 0) {
             cursorPosition--;
